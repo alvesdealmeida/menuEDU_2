@@ -2,7 +2,8 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
 <title>🎓 Jogos Educacionais II</title>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
@@ -319,6 +320,113 @@
     font-size: 0.55rem; color: rgba(255,255,255,0.2);
     letter-spacing: 0.1em; position: relative; z-index: 10;
   }
+
+  * ── Link EDUC GAMES I ──────────────────────── */
+  .edu-link {
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(0,245,255,0.08);
+    border: 1px solid rgba(0,245,255,0.3);
+    border-radius: 4px; padding: 4px 12px;
+    color: var(--neon-cyan);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.48rem; text-decoration: none;
+    letter-spacing: 0.05em; transition: all 0.2s;
+    white-space: nowrap; cursor: pointer;
+  }
+  .edu-link:hover {
+    background: rgba(0,245,255,0.2);
+    box-shadow: 0 0 14px rgba(0,245,255,0.3);
+  }
+
+  /* ── Tablet (até 900px) ──────────────────────── */
+  @media (max-width: 900px) {
+    .games-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+  }
+
+  /* ── Celular (até 600px) ─────────────────────── */
+  @media (max-width: 600px) {
+
+    body   { cursor: auto; }
+    .cursor { display: none; }
+    .tab, .card-btn, .game-card { cursor: pointer; }
+
+    .container { padding: 20px 14px 60px; }
+
+    .logo-icon { font-size: 2.4rem; }
+    h1         { font-size: clamp(0.85rem, 4.5vw, 1.2rem); }
+    .subtitle  { font-size: 0.42rem; letter-spacing: 0.2em; }
+    header    { margin-bottom: 28px; }
+
+    .top-bar {
+      flex-wrap: wrap; gap: 8px;
+      justify-content: center;
+      padding: 10px 12px; font-size: 0.48rem;
+    }
+    .top-bar-clock { display: none; }
+
+    .search-wrap        { margin-bottom: 20px; }
+    .search-wrap input {
+      font-size: 0.75rem;
+      padding: 12px 14px 12px 42px;
+    }
+
+    .tabs {
+      flex-wrap: nowrap; overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 4px; margin-bottom: 24px;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab {
+      flex-shrink: 0; padding: 10px 14px;
+      font-size: 0.58rem; touch-action: manipulation;
+      cursor: pointer; min-height: 40px;
+    }
+
+    .games-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .card-thumb  { height: 100px; font-size: 2.4rem; }
+    .card-body   { padding: 12px 12px 14px; }
+    .card-title  { font-size: 0.65rem; }
+    .card-desc   {
+      font-size: 0.56rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden; margin-bottom: 10px;
+    }
+    .card-btn {
+      font-size: 0.42rem; padding: 8px 10px;
+      min-height: 34px; touch-action: manipulation;
+      cursor: pointer;
+    }
+    .card-tag   { font-size: 0.4rem; }
+    .card-badge {
+      font-size: 0.36rem; padding: 3px 5px;
+      top: 8px; right: 8px;
+    }
+
+    footer { margin-top: 36px; }
+  }
+
+  /* ── Celular muito pequeno (até 360px) ───────── */
+  @media (max-width: 360px) {
+    .games-grid { grid-template-columns: 1fr; }
+    .card-thumb { height: 110px; }
+  }
+
+  /* ── Tablet médio (601px–900px) ──────────────── */
+  @media (min-width: 601px) and (max-width: 900px) {
+    .container { padding: 32px 20px 60px; }
+    .top-bar   { font-size: 0.55rem; }
+    .edu-link  { font-size: 0.45rem; padding: 4px 10px; }
+  }
 </style>
 </head>
 <body>
@@ -336,10 +444,15 @@
     <p class="subtitle">JOGOS EDUCACIONAIS &nbsp;▼</p>
   </header>
 
+ <!-- ✅ COLOQUE este bloco no lugar: -->
   <div class="top-bar">
-    <span>● PLAYER 1 READY</span>
-    <span class="blink">INSERT COIN</span>
-    <span id="clock">00:00:00</span>
+    <span class="top-bar-left">● PLAYER 1 READY</span>
+    <a href="https://alvesdealmeida.github.io/menuEDU/"
+       target="_blank"
+       class="edu-link">
+      🎓 <span class="edu-link-text">EDUC GAMES I</span>
+    </a>
+    <span id="clock" class="top-bar-clock">00:00:00</span>
   </div>
 
   <div class="search-wrap">
@@ -501,14 +614,20 @@ function createStars() {
   }
 }
 
-// Cursor
+// Cursor — ativa no mouse, some no celular/tablet
 const cursor = document.getElementById("cursor");
-document.addEventListener("mousemove", e => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top  = e.clientY + "px";
-});
-document.addEventListener("mousedown", () => cursor.classList.add("clicked"));
-document.addEventListener("mouseup",   () => cursor.classList.remove("clicked"));
+const isTouch = navigator.maxTouchPoints > 0 || ('ontouchstart' in window);
+if (!isTouch) {
+  document.addEventListener("mousemove", e => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top  = e.clientY + "px";
+  });
+  document.addEventListener("mousedown", () => cursor.classList.add("clicked"));
+  document.addEventListener("mouseup",   () => cursor.classList.remove("clicked"));
+} else {
+  cursor.style.display = "none";         // esconde cursor custom
+  document.body.style.cursor = "auto";   // restore cursor do sistema
+}
 
 // Clock
 function updateClock() {
@@ -524,6 +643,7 @@ updateClock();
 createStars();
 renderTabs();
 filterGames();
+   
 </script>
 </body>
 </html>
