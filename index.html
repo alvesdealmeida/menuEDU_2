@@ -335,8 +335,12 @@
   }
   .edu-link:hover {
     background: rgba(255, 238, 0, 0.28);
-    box-shadow: 0 0 14px rgba(255, 238, 0, 0.5);
+    box-shadow: 0 0 18px rgba(255, 238, 0, 0.5);
   }
+  @keyframes pulse {
+  0%,100% { box-shadow: 0 0 6px rgba(255,238,0,0.3); }
+  50%      { box-shadow: 0 0 18px rgba(255,238,0,0.7); }
+}
 
   /* ── Tablet (até 900px) ──────────────────────── */
   @media (max-width: 900px) {
