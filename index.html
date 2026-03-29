@@ -438,6 +438,27 @@
 
     footer { margin-top: 36px; }
   }
+  .edu-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0,245,255,0.08);
+  border: 1px solid rgba(0,245,255,0.3);
+  border-radius: 4px;
+  padding: 4px 12px;
+  color: var(--neon-cyan);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem; 
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.edu-link:hover {
+  background: rgba(0,245,255,0.2);
+  box-shadow: 0 0 14px rgba(0,245,255,0.3);
+}
 
   /* ── Celular muito pequeno (até 360px) ───────── */
   @media (max-width: 360px) {
@@ -474,7 +495,7 @@
     <a href="https://alvesdealmeida.github.io/menuEDU/"
      
        class="edu-link">
-      🎓 <span class="edu-link">EDUC GAMES I</span>
+      🎓 <span class="edu-link-text">EDUC GAMES I</span>
     </a>
     <span id="clock" class="top-bar-clock">00:00:00</span>
   </div>
