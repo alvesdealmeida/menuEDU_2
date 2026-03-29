@@ -323,20 +323,40 @@
 
   * ── Link EDUC GAMES I ──────────────────────── */
   .edu-link {
-    display: flex; align-items: center; gap: 6px;
-    background: rgba(255, 238, 0, 0.12);
-    border: 1px solid rgba(255, 238, 0, 0.5);
-    border-radius: 4px; padding: 4px 12px;
-    color: var(--neon-yellow);
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.48rem; text-decoration: none;
-    letter-spacing: 0.05em; transition: all 0.2s;
-    white-space: nowrap; cursor: pointer;
-  }
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(255, 238, 0, 0.15), rgba(0,0,0,0.4));
+  border: 2px solid rgba(255, 238, 0, 0.7);
+  border-radius: 10px;
+  padding: 12px 20px;
+  color: var(--neon-yellow);
+  font-family: 'Press Start 2P', monospace;
+  /* 🔥 AUMENTO REAL DO TEXTO */
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  /* ✨ EFEITO NEON FORTE */
+  text-shadow:
+    0 0 5px var(--neon-yellow),
+    0 0 10px var(--neon-yellow),
+    0 0 20px var(--neon-yellow);
+  box-shadow:
+    0 0 10px rgba(255, 238, 0, 0.2),
+    inset 0 0 10px rgba(255, 238, 0, 0.1);
+  animation: pulse 2s ease-in-out infinite;
+}
   .edu-link:hover {
-    background: rgba(255, 238, 0, 0.28);
-    box-shadow: 0 0 18px rgba(255, 238, 0, 0.5);
-  }
+  transform: scale(1.08);
+  background: rgba(255, 238, 0, 0.3);
+  box-shadow:
+    0 0 20px rgba(255, 238, 0, 0.7),
+    0 0 40px rgba(255, 238, 0, 0.4);
+  letter-spacing: 0.15em;
+}
   @keyframes pulse {
   0%,100% { box-shadow: 0 0 6px rgba(255,238,0,0.3); }
   50%      { box-shadow: 0 0 18px rgba(255,238,0,0.7); }
